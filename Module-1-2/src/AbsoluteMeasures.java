@@ -18,7 +18,7 @@ public class AbsoluteMeasures {
         int naula = (int) (grams / Naula_Grams);
         grams = grams % Naula_Grams;
         // Convert to luoti (double with 2 decimal)
-        double luoti = grams / Luoti_Grams;
+        double luoti = (grams / Luoti_Grams);
         // Print Result
         System.out.printf("%.0f grams is %d leiviskä, %d naula, and %.2f luoti.\n",
                 (leiviska * Leiviska_Grams + naula * Naula_Grams + luoti * Luoti_Grams)
