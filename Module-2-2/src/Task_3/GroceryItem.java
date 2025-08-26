@@ -11,11 +11,6 @@ public class GroceryItem {
         this.category = category;
     }
 
-    // Getters for name, cost, and category
-    public String getName() {
-        return name;
-    }
-
     public double getCost() {
         return cost;
     }

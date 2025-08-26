@@ -29,7 +29,7 @@ public class GroceryListManager {
 
     // Displays items with a positive quantity.
     public void displayAvailableItems() {
-        System.out.println("\n--- Available Items (Quantity > 0) ---");
+        System.out.println("\nAvailable items quantity greater than zero");
         boolean foundAvailable = false;
         for (GroceryItem item : groceryList.values()) {
             if (item.getQuantity() > 0) {

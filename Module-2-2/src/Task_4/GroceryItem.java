@@ -13,10 +13,6 @@ public class GroceryItem {
         this.quantity = quantity;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public double getCost() {
         return cost;
     }

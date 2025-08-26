@@ -50,7 +50,7 @@ public class GroceryListManager {
     }
 
     public void displayAvailableItems() {
-        System.out.println("\n--- Available Items (Quantity > 0) ---");
+        System.out.println("\nAvailable Items quantity greater than zero ");
         boolean foundAvailable = false;
         for (GroceryItem item : groceryList.values()) {
             if (item.getQuantity() > 0) {
@@ -62,18 +62,6 @@ public class GroceryListManager {
             System.out.println("No items are currently available.");
         }
     }
-
-    public void displayList() {
-        if (groceryList.isEmpty()) {
-            System.out.println("The grocery list is empty.");
-        } else {
-            System.out.println("\n--- Full Grocery List ---");
-            for (GroceryItem item : groceryList.values()) {
-                System.out.println(item);
-            }
-        }
-    }
-
     public static void main(String[] args) {
         GroceryListManager manager = new GroceryListManager();
 
