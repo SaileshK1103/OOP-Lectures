@@ -12,6 +12,10 @@ public class Library {
 
     // Display all books
     public void displayBooks() {
+        if (books.isEmpty()) {
+            System.out.println("Library is empty.");
+            return;
+        }
         System.out.println("Library Catalog:");
         int index = 1;
         for (Book book : books) {

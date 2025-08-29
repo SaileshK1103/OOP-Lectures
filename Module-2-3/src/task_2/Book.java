@@ -1,4 +1,4 @@
-package task_1;
+package task_2;
 
 public class Book {
     private final String title;
@@ -25,6 +25,6 @@ public class Book {
 
     @Override
     public String toString() {
-         return ("Title: \"" +title +"\", Author: \"" +author +"\", Year: " +publication_year);
+        return ("Title: \"" +title +"\", Author: \"" +author +"\", Year: " +publication_year);
     }
 }
