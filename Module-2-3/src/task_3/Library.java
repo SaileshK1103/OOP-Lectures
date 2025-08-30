@@ -1,26 +1,27 @@
-package task_2;
+package task_3;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Library {
-    private ArrayList<Book> books = new ArrayList<>();
-    private ArrayList<Book> borrowedBooks = new ArrayList<>();
+    private final ArrayList<Book> books = new ArrayList<>();
+    private final ArrayList<Book> borrowedBooks = new ArrayList<>();
 
-    // Add book to library
+    // Adda book to library
     public void addBook(Book book) {
         books.add(book);
     }
 
-    // Display all books
-    public void displayBooks() {
-        if (books.isEmpty()) {
-            System.out.println("Library is empty.");
+    // Display all books in the library
+    public void displayBooks(){
+        if(books.isEmpty()){
+            System.out.println("Library is empty");
             return;
         }
-        System.out.println("Library Catalog:");
+        System.out.println("Library Catalog: ");
         int index = 1;
         for (Book book : books) {
-            System.out.println(index + ". " + book);
+            System.out.println(index+"."+book);
             index++;
         }
     }
@@ -39,6 +40,7 @@ public class Library {
         System.out.println("Book with title \"" + title + "\" could not be borrowed.");
         return false;
     }
+
     // Return a book to the library
     public boolean returnBook(String title) {
         for (Book book : borrowedBooks) {
@@ -60,7 +62,7 @@ public class Library {
             System.out.println("Borrowed Books:");
             int i = 1;
             for (Book book : borrowedBooks) {
-                System.out.println(i + ". Title: \"" + book.getTitle() + "\", Author: \"" + book.getAuthor() + "\", Year: " + book.getPublication_year());
+                System.out.println(i + ". Title: \"" + book.getTitle() + "\", Author: \"" + book.getAuthor() + "\", Year: " + book.getPublicationYear());
                 i++;
             }
         }
@@ -72,12 +74,21 @@ public class Library {
         boolean found = false;
         for (Book book : books) {
             if (book.getAuthor().equalsIgnoreCase(author)) {
-                System.out.println("Title: " +book.getTitle() + ", Year: " +book.getPublication_year());
+                System.out.println("Title: " +book.getTitle() + ", Year: " +book.getPublicationYear());
                 found = true;
             }
         }
         if(!found) {
             System.out.println("No books found by " + author);
         }
+    }
+    // isBookAvailable
+    public boolean isBookAvailable(String title){
+        for(Book book : books){
+            if(book.getTitle().equalsIgnoreCase(title)){
+                return true;
+            }
+        }
+        return false;
     }
 }
