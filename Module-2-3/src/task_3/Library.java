@@ -1,7 +1,6 @@
 package task_3;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Library {
     private final ArrayList<Book> books = new ArrayList<>();
