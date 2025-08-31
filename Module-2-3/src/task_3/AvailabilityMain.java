@@ -67,7 +67,7 @@ public class AvailabilityMain {
                     System.out.println("Enter user name: ");
                     String borrowUser = input.nextLine();
 
-                    User userBorrow = library.getUserByName(borrowUser);;
+                    User userBorrow = library.getUserByName(borrowUser);
                     if(userBorrow == null) {
                         System.out.println("User not found. Please add the user first.");
                         break;
