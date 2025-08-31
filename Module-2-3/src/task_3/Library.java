@@ -1,14 +1,24 @@
 package task_3;
 
+import task_6.User;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Library {
     private final ArrayList<Book> books = new ArrayList<>();
     private final ArrayList<Book> borrowedBooks = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
 
     // Adda book to library
     public void addBook(Book book) {
         books.add(book);
+    }
+
+    // Refer to task6 - add user method
+    public void addUser(User user) {
+        users.add(user);
+        System.out.println("User added: "+user.getName());
     }
 
     // Display all books in the library
@@ -26,27 +36,29 @@ public class Library {
     }
 
     //  Borrow a book by title
-    public boolean borrowBook(String title) {
-        for (int i = 0; i < books.size(); i++) {
-            Book book = books.get(i);
+    // Modify method with user refer to task-6
+    public boolean borrowBook(String title, User user) {
+        for (Book book : books) {
             if (book.getTitle().equalsIgnoreCase(title.trim())) {
                 borrowedBooks.add(book);
-                books.remove(i);
-                System.out.println("Borrowed: " + book.getTitle());
+                user.borrowBook(book);
+                books.remove(book);
+                System.out.println(user.getName() + " borrowed: " + title);
                 return true;
             }
         }
-        System.out.println("Book with title \"" + title + "\" could not be borrowed.");
+        System.out.println("Book not available: " + title);
         return false;
     }
 
     // Return a book to the library
-    public boolean returnBook(String title) {
+    public boolean returnBook(String title, User user) {
         for (Book book : borrowedBooks) {
             if (book.getTitle().equalsIgnoreCase(title)) {
                 borrowedBooks.remove(book);
                 books.add(book);
-                System.out.println("Returned: " + book.getTitle());
+                user.returnBook(book);
+                System.out.println(user.getName() + " returned: " + title);
                 return true;
             }
         }
@@ -89,5 +101,85 @@ public class Library {
             }
         }
         return false;
+    }
+
+    // Task 4 Rate method
+    public boolean rateBook(String title, double rating){
+        for(Book book : books){
+            if(book.getTitle().equalsIgnoreCase(title.trim())){
+                book.setRating(rating);
+                System.out.println("Rated \""+title+"\"with"+rating+ "stars");
+                return true;
+            }
+        }
+        System.out.println("Book with title \""+title+"\" not found.");
+        return false;
+    }
+
+    // Task4 Review method
+    public boolean reviewBook(String title, String review) {
+        for (Book book : books) {
+            if (book.getTitle().equalsIgnoreCase(title.trim())) {
+                book.addReview(review);
+                System.out.println("Review added for \"" + title + "\": " + review);
+                return true;
+            }
+        }
+        System.out.println("Book with title \"" + title + "\" not found.");
+        return false;
+    }
+
+    // Refer to Task-5 - Calculate average rating of all books
+    public double getAverageBookRating() {
+        if(books.isEmpty()){
+            return 0.0;
+        }
+        double total = 0.0;
+        int count = 0;
+        for(Book book : books){
+            if(book.getRating() > 0){
+                // consider only rated books
+                total += book.getRating();
+                count++;
+            }
+        }
+        return count > 0 ? total / count : 0.0;
+    }
+
+    // Refer to task-5 find most reviewed book
+    public Book getMostReviewedBook() {
+        if(books.isEmpty()){
+            return null;
+        }
+        Book mostReviewed = books.get(0);
+        for(Book book : books){
+            if(book.getReviews().size() > mostReviewed.getReviews().size()){
+                mostReviewed = book;
+            }
+        }
+        return mostReviewed;
+    }
+
+    // Refer to task6 - list all users
+    public void displayUsers() {
+        if(users.isEmpty()){
+            System.out.println("No registered users.");
+        }
+        else{
+            System.out.println("Registered users:");
+            for(User user : users){
+                System.out.println(user);
+            }
+        }
+    }
+
+    // Refer to task-6 : Find user by name method
+    public User getUserByName(String name) {
+        for (User user : users) {
+            if (user.getName().equalsIgnoreCase(name.trim())) {
+                return user;
+            }
+        }
+        return null;
     }
 }
