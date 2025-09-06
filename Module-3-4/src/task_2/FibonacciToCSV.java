@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class FibonacciToCSV {
-    public static void main(String args[]){
+    public static void main(String[] args){
         String fileName = "fibonacci.csv";
         int n = 60;
         long[] fib = new long[n];
