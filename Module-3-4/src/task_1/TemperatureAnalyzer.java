@@ -1,6 +1,7 @@
 package task_1;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
@@ -56,7 +57,7 @@ public class TemperatureAnalyzer {
                 System.out.println("No temperature data for " + targetDate);
             }
         }
-        catch (Exception e) {
+        catch (IOException e) {
             System.err.println(e);
         }
     }
