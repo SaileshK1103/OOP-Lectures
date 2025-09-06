@@ -41,7 +41,7 @@ public class TemperatureAnalyzer {
                         temperatures.add(temp);
                     }
                     catch(NumberFormatException e){
-                        // ignore invalid values
+                        System.err.println(e);
                     }
                 }
             }
@@ -57,7 +57,7 @@ public class TemperatureAnalyzer {
             }
         }
         catch (Exception e) {
-            e.printStackTrace();
+            System.err.println(e);
         }
     }
 }
