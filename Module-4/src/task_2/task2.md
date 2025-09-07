@@ -81,7 +81,7 @@ The Calculator class is a simple implementation of a calculator that can perform
 ## Evaluation of Github Copilot
 
     How I used Github Copilot:
-    - I wrote a method signature and let copilot to generate the mothod body.
+    - I wrote a method signature and let copilot to generate the method body.
     - I provided comments in English and let Copilot completed it with valid suggestions.
     - I partially wrote code, and Copilot completed it with valid suggestions.
     - I asked Copilot to generate documentation for the class and methods
