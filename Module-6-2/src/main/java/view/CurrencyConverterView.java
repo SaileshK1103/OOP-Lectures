@@ -51,7 +51,7 @@ public class CurrencyConverterView extends Application {
         grid.add(messageLabel, 0,5,2,1);
 
         Scene scene = new Scene(grid, 400, 300);
-        scene.getStylesheets().add("styles.css");
+        scene.getStylesheets().add("style.css");
 
         stage.setScene(scene);
         stage.show();
