@@ -22,7 +22,7 @@ public class CurrencyModel {
     public Map<String, Currency> getCurrencies() {
         return currencies;
     }
-    public double converts(String from, String to, double amount) {
+    public double convert(String from, String to, double amount) {
         Currency source = currencies.get(from);
         Currency target = currencies.get(to);
         if (source == null || target == null) {
