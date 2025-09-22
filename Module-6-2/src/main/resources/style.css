@@ -1,4 +1,8 @@
 .root {
-    -fx-font-family: "Arial";
+    -fx-font-family: "sans-serif";
     -fx-font-size: 14px;
+}
+
+Label {
+    -fx-text-fill: blue;
 }
