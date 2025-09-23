@@ -3,7 +3,7 @@ package model;
 public class Pet {
     private double x, y; // current position
     private double targetX, targetY; // mouse position
-    private double speed = 2.0; // pixels per frame
+    private double speed = 5.0; // pixels per frame
 
     public Pet(double startX, double startY) {
         this.x = startX;
