@@ -4,6 +4,8 @@ import javafx.application.Application;
 import model.CurrencyModel;
 import view.CurrencyConverterView;
 
+import static javafx.application.Application.launch;
+
 public class ConverterController {
     private CurrencyModel model;
 
@@ -39,6 +41,6 @@ public class ConverterController {
         });
     }
     public static void main(String[] args){
-        Application.launch(CurrencyConverterView.class, args);
+        launch(CurrencyConverterView.class, args);
     }
 }

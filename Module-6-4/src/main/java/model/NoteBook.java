@@ -20,6 +20,15 @@ public class NoteBook {
     }
 
     /**
+     * Retrieves all notes currently stored in th notebook.
+     * @return A list of Note objects.
+     */
+    public List<Note> getAllNotes() {
+        // Return a copy of the list to prevent external modification of the internal state.
+        return new ArrayList<>(notes);
+    }
+
+    /**
      * Adds a new Note object to the notebook.
      * @param note the Note object to add
      */

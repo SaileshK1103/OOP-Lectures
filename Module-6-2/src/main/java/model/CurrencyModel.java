@@ -25,7 +25,7 @@ public class CurrencyModel {
     public double convert(String from, String to, double amount) {
         Currency source = currencies.get(from);
         Currency target = currencies.get(to);
-        if (source == null || target == null) {
+        if (source == null || target == null || amount < 0) {
             throw new IllegalArgumentException("Invalid currency code selected.");
         }
         // Covert to USD first and then to target currency
