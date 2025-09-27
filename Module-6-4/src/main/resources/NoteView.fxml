@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="view.NoteViewController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <!-- Top Section for Title and Add Button -->
+    <HBox alignment="CENTER_LEFT" spacing="10.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+        <Label text="Title:" minWidth="50.0" />
+        <TextField fx:id="titleField" promptText="Enter note title..." HBox.hgrow="ALWAYS" />
+        <Button  onAction="#handleAddNote" style="-fx-font-weight: bold; -fx-background-color: #4CAF50; -fx-text-fill: white;" text="Add Note" />
+    </HBox>
+
+    <!-- Input TextArea for Content-->
+    <TextArea fx:id="contentArea" promptText="Write your note content here..." wrapText="true" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="60.0"/>
+
+    <!-- Separator-->
+    <Separator AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="210.0" />
+
+    <!-- Display section (SplitPane) for saved notes-->
+    <Label text="Saved Notes" style="fx-font-size: 14pt; fx-font-weight: bold;" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="255.0" />
+
+    <SplitPane dividerPositions="0.3" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="255.0">
+        <!-- Left side: List of Notes-->
+        <ListView fx:id="noteListView" prefWidth="200.0" />
+
+        <!-- Right side: Content Dispaly section -->
+        <TextArea fx:id="contentDisplayArea" editable="false" promptText="Select a note title from the list to view its content." wrapText="true" />
+    </SplitPane>
+</AnchorPane>

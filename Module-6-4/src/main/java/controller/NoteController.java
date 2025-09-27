@@ -27,7 +27,7 @@ public class NoteController {
      * @param title The title entered by the user in the View
      * @param content The content entered by the user in the View.
      */
-    public void addNewBote(String title, String content){
+    public void addNewNote(String title, String content){
         // create the Note to the model
         Note newNote = new Note(title, content);
 
