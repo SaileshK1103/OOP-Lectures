@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -15,7 +12,7 @@
     <HBox alignment="CENTER_LEFT" spacing="10.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
         <Label text="Title:" minWidth="50.0" />
         <TextField fx:id="titleField" promptText="Enter note title..." HBox.hgrow="ALWAYS" />
-        <Button  onAction="#handleAddNote" style="-fx-font-weight: bold; -fx-background-color: #4CAF50; -fx-text-fill: white;" text="Add Note" />
+        <Button  fx:id="addUpdateButton" onAction="#handleAddOrUpdateNote" style="-fx-font-weight: bold; -fx-background-color: #4CAF50; -fx-text-fill: white;" text="Add Note" />
     </HBox>
 
     <!-- Input TextArea for Content-->
@@ -29,7 +26,15 @@
 
     <SplitPane dividerPositions="0.3" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="255.0">
         <!-- Left side: List of Notes-->
-        <ListView fx:id="noteListView" prefWidth="200.0" />
+        <VBox>
+            <ListView fx:id="noteListView" prefWidth="200.0" />
+
+            <!-- Edit and Delete buttons -->
+            <HBox spacing="10.0" alignment="CENTER_RIGHT" style="-fx-padding: 10;">
+                <Button fx:id="editButton" onAction="#handleEditNote" disable="true" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text="Edit" />
+                <Button fx:id="deleteButton" onAction="#handleDeleteNote" disable="true" style="-fx-background-color: #F44336; -fx-text-fill: white;" text="Delete" />
+            </HBox>
+        </VBox>
 
         <!-- Right side: Content Dispaly section -->
         <TextArea fx:id="contentDisplayArea" editable="false" promptText="Select a note title from the list to view its content." wrapText="true" />

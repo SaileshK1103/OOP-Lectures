@@ -2,16 +2,20 @@ package controller;
 
 import model.Note;
 import model.NoteBook;
+import view.NoteViewController;
 
 import java.util.List;
 
 /**
  * The Controller acts as the intermediary, handling user actions
- * e.g adding note and managing communication with the NoteBook(Model)
+ * (e.g adding, editing, deleting a note and managing communication with the NoteBook(Model)
  */
 public class NoteController {
     // Reference to the Model layer
     private final NoteBook notebook;
+    private NoteViewController view;
+    // State variable to track which note is currently selecting for editing.
+    private Note currentlyEditing;
 
     /**
      * Initialize the Controller by injecting the required NoteBook instance.
@@ -22,19 +26,59 @@ public class NoteController {
     }
 
     /**
-     * Handles the "Add" user interaction.
+     * Inject the View Controller to establish the link
+     */
+
+    public void setViewController(NoteViewController view) {
+        this.view = view;
+    }
+    /**
+     * Handles the "Add"  or  "Update "user interaction.
      * Creates a new Note object and adds it to the Notebook model.
      * @param title The title entered by the user in the View
      * @param content The content entered by the user in the View.
      */
     public void addNewNote(String title, String content){
         // create the Note to the model
-        Note newNote = new Note(title, content);
+        if(currentlyEditing != null){
+            // if edit mode, update existing note object
+            currentlyEditing.setTitle(title);
+            currentlyEditing.setContent(content);
+            currentlyEditing = null; // Exit edit mode after update
+        }
+        else {
+            // Otherwise create and add anew note
+            Note newNote = new Note(title, content);
+            notebook.addNote(newNote);
+        }
+        // notify the view to update it's display after a successful save/edit
+        if(view != null){
+            view.updateNoteList();
+        }
+    }
 
-        // Add the new Note to the Model
-        notebook.addNote(newNote);
+    /**
+     * Handles the "Delete" user interaction
+     */
+    public void deleteNote(Note noteToDelete){
+        notebook.removeNote(noteToDelete);
 
-        // notify the view to update it's display
+        // If the deleted note was the one being edited, clear the edit state
+        if(currentlyEditing == noteToDelete){
+            currentlyEditing = null;
+        }
+        // Notify the view to update.
+        if(view != null){
+            view.updateNoteList();
+        }
+    }
+
+    /**
+     * Puts the controller into edit mode for a selected note.
+     * This is called by the View when the user clicks the "Edit" button.
+     */
+    public void startEdit(Note noteToEdit){
+        this.currentlyEditing = noteToEdit;
     }
 
     /**
@@ -43,14 +87,5 @@ public class NoteController {
      */
     public List<Note> getNotesList(){
         return notebook.getAllNotes();
-    }
-
-    /**
-     * Retrieves a specific note from the Model by its index.
-     * @param index The 0-based index of the note to retrieve.
-     * @return The Note object, or null if the index is invalid
-     */
-    public Note getNote(int index){
-        return notebook.getNoteByIndex(index);
     }
 }

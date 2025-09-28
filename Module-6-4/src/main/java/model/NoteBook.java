@@ -39,6 +39,15 @@ public class NoteBook {
     }
 
     /**
+     * Removed a specific Note object from the collection.
+     * @param note The Note to remove
+     * @return true if the note was found and removed, false otherwise.
+     */
+    public boolean removeNote(Note note) {
+        return notes.remove(note);
+    }
+
+    /**
      * Retrieves a Note object by its index in the list
      * @param index The index of the note to retrieve (=-based)
      * @return The note object at the specified index, or null if the index is out of bounds.
