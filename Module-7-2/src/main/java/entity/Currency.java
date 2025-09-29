@@ -2,12 +2,12 @@ package entity;
 
 public class Currency {
     private String abbreviation;
-    private String code;
+    private String name;
     private double rateToUSD;
 
-    public Currency(String abbreviation, String code, double rateToUSD) {
+    public Currency(String abbreviation, String name, double rateToUSD) {
         this.abbreviation = abbreviation;
-        this.code = code;
+        this.name = name;
         this.rateToUSD = rateToUSD;
     }
 
@@ -19,12 +19,12 @@ public class Currency {
         this.abbreviation = abbreviation;
     }
 
-    public String getCode() {
-        return code;
+    public String getName() {
+        return name;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setCode(String name) {
+        this.name = name;
     }
 
     public double getRateToUSD() {
